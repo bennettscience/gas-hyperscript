@@ -1,0 +1,25 @@
+<!-- 
+  Bruce McPherson's Promises template 
+  https://ramblings.mcpher.com/gassnippets2/using-promises-with-apps-script/
+  -->
+<script>
+  var Runner = (function(ns) {
+  
+    ns.run = function(namespace, method) {
+      let runArgs = Array.prototype.slice.call(arguments).slice(2);
+
+      if(arguments.length < 2) {
+        throw new Error('Need at least a namespace and method.')
+      }
+
+      return new Promise(function(resolve, reject) {
+        google.script.run.withFailureHandler(function(err) {
+          reject(err)
+        }).withSuccessHandler(function(result) {
+          resolve(result)
+        }).exposeRun(namespace, method, runArgs)
+      })
+    }
+    return ns;
+  })(Runner || {})
+</script>

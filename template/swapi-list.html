@@ -1,0 +1,10 @@
+<? for (var i=0; i<people.length; i++) { ?>
+  <span class="active"
+    _='
+      on click call Runner.run("SWAPI", "saveName", "<?= people[i].name ?>")
+      then remove me
+    '
+  >
+    <?= people[i].name ?>
+  </span>
+<? } ?>

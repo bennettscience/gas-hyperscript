@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+    <?!= include('static/Runner.js'); ?>
+    <?!= include('static/style.css'); ?>
+  </head>
+  <body>
+    <main>
+      <div class="main-container">
+        <div class="sample">
+          <b>Dynamic insertion</b>
+          <button
+            _="
+              on click 
+              call Runner.run('SimpleSwap', 'htmlTemplate')
+              then put the result into #target
+              then call _hyperscript.processNode(#target)
+            "
+          >trigger</button>
+          <span id="target">This gets replaced.</span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
